@@ -35,12 +35,13 @@ class Wallet:
     def load_records(self):
         try:
             with open(self.filename, "r") as file:
-                for line in file:
-                    data = line.strip().split("\n")
-                    date = data[0].split(": ")[1]
-                    category = data[1].split(": ")[1]
-                    amount = float(data[2].split(": ")[1])
-                    description = data[3].split(": ")[1]
+                data = file.read().strip().split("\n\n")
+                for entry in data:
+                    lines = entry.strip().split("\n")
+                    date = lines[0].split(": ")[1]
+                    category = lines[1].split(": ")[1]
+                    amount = float(lines[2].split(": ")[1])
+                    description = lines[3].split(": ")[1]
                     record = Record(date, category, amount, description)
                     self.records.append(record)
         except FileNotFoundError:

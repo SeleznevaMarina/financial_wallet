@@ -8,8 +8,8 @@ class App:
     - wallet (Wallet): Объект класса Wallet для управления кошельком.
     """
 
-    def __init__(self):
-        self.wallet = Wallet("data.txt")
+    def __init__(self, filename="data.txt"):
+        self.wallet = Wallet(filename)
 
     def run(self):
         while True:
@@ -60,7 +60,8 @@ class App:
         category = input("Введите новую категорию (Доход/Расход): ")
         amount = float(input("Введите новую сумму: "))
         description = input("Введите новое описание: ")
-        new_record = {"date": date, "category": category, "amount": amount, "description": description}
+        # new_record = {"date": date, "category": category, "amount": amount, "description": description}
+        new_record = Record(date, category, amount, description)
         self.wallet.edit_record(index - 1, new_record)
         print("\nЗапись успешно отредактирована.")
 
@@ -76,7 +77,3 @@ class App:
                 print(f"{i}. {record}")
         else:
             print("\nЗаписи не найдены.")
-
-if __name__ == "__main__":
-    app = App()
-    app.run()
