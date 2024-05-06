@@ -1,6 +1,13 @@
 from wallet import Wallet, Record
 
 class App:
+    """
+    Класс для консольного приложения "Личный финансовый кошелек".
+
+    Атрибуты:
+    - wallet (Wallet): Объект класса Wallet для управления кошельком.
+    """
+
     def __init__(self):
         self.wallet = Wallet("data.txt")
 

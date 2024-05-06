@@ -1,4 +1,14 @@
 class Record:
+    """
+    Класс для представления записей о доходе или расходе в кошельке.
+
+    Атрибуты:
+    - date (str): Дата записи.
+    - category (str): Категория записи (Доход/Расход).
+    - amount (float): Сумма записи.
+    - description (str): Описание записи.
+    """
+
     def __init__(self, date, category, amount, description):
         self.date = date
         self.category = category
@@ -9,6 +19,14 @@ class Record:
         return f"Дата: {self.date}, Категория: {self.category}, Сумма: {self.amount}, Описание: {self.description}"
 
 class Wallet:
+    """
+    Класс для управления кошельком с записями о доходах и расходах.
+
+    Атрибуты:
+    - filename (str): Имя файла для хранения данных.
+    - records (List[Record]): Список объектов класса Record.
+    """
+    
     def __init__(self, filename):
         self.filename = filename
         self.records = []
